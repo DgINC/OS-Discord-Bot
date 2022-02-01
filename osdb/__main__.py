@@ -3,6 +3,7 @@ import os
 import gettext
 from os.path import abspath, dirname, realpath, join
 
+import nextcord
 from nextcord import Intents
 from nextcord.ext import commands
 
@@ -22,6 +23,7 @@ client = commands.Bot(command_prefix="!", intents=Intents.all())
 @client.event
 async def on_ready():
     print(_("OSDB start and ready to takeover of the world!"))
+    await client.change_presence(activity=nextcord.CustomActivity(name="Online"))
 
 if os.name != "nt":
     import uvloop
@@ -34,7 +36,4 @@ client.load_extension("osdb.plugins.roles")
 #    guild = client.get_guild(guild_id)
 #    await guild.rollout_application_commands()
 
-client.run("NjI1NjkwNTExOTE4NzU5OTQ2.XYjNsg.6kZKorGuf2ZGKr9p67GcgCDUm-k")
-
-guild = client.get_guild(TESTING_GUILD_ID)
-guild.rollout_application_commands()
+client.run("NjI1NjkwNTExOTE4NzU5OTQ2.XYjNsg.MD_yMtlEoJUbtuLUIp-KYNqmw7Q")
