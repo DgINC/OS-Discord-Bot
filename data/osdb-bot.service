@@ -3,11 +3,15 @@ Description=OS Discord bot
 After=network.target
 
 [Service]
-Type=notify
-ExecStart=/usr/bin/env python3 -m /home/dg/OS-Discord-Bot/osdb
-Environment=PYTHONUNBUFFERED=1
-User=python_demo_service
-Restart=on-failure
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/home/dg/OS-Discord-Bot/
+Environment="PYTHONPATH=$PYTHONPATH:/home/dg/OS-Discord-Bot/"
+Environment="PATH=/home/dg/OS-Discord-Bot/:$PATH"
+ExecStart=/usr/bin/python3 -m osdb
+Restart=always
+
 
 [Install]
 WantedBy=default.target
